@@ -20,8 +20,8 @@ class AzureCosmosDB {
       'Accept': 'application/json',
       'x-ms-version': '2016-07-11',
       'Authorization':
-          'type%3Dmaster%26ver%3D1.0%26sig%3DF2J2GO6VUx0w8HG73J5uvJEEs5%2BKD4FL3RvPGtgRakM%3D',
-      'x-ms-date': 'Sun, 11 Oct 2020 13:17:53 GMT',
+          'type%3Dmaster%26ver%3D1.0%26sig%3DBka5NDZj%2BMabtoa1QtYQhJUTySZT71AY0N4cwwJom7U%3D',
+      'x-ms-date': 'Mon, 12 Oct 2020 17:02:19 GMT',
 //      'x-ms-documentdb-partitionkey': '["$userId"]'
     };
     try {
@@ -36,7 +36,8 @@ class AzureCosmosDB {
           ProductDetail productDetail = ProductDetail(
               id: decodeData['Documents'][i]['id'],
               name: decodeData['Documents'][i]['name'],
-              imageUrl: decodeData['Documents'][i]['imageUrl']);
+              imageUrl: decodeData['Documents'][i]['imageUrl'],
+          price: decodeData['Documents'][i]['price']);
 //              print(decodeData['Documents'][i]['id'] + ' ' +decodeData['Documents'][i]['name'] + ' ' +decodeData['Documents'][i]['imageUrl']);
           productsList.add(productDetail);
         }
@@ -165,8 +166,8 @@ class AzureCosmosDB {
       'Accept': 'application/json',
       'x-ms-version': '2016-07-11',
       'Authorization':
-          'type%3Dmaster%26ver%3D1.0%26sig%3Darh1MrAJpnUbAprtNK7hX1t%2Bb%2FmaMp5RyNwBCh0MtdE%3D',
-      'x-ms-date': 'Sun, 11 Oct 2020 18:15:42 GMT',
+          'type%3Dmaster%26ver%3D1.0%26sig%3DtIIsqrkwdDalh7awZphQ190KHSqGGN9t8fv%2F4n6JfkU%3D',
+      'x-ms-date': 'Mon, 12 Oct 2020 17:10:45 GMT',
       'x-ms-documentdb-partitionkey': '["$customerId"]'
     };
     //Get all Documents
@@ -174,8 +175,8 @@ class AzureCosmosDB {
       'Accept': 'application/json',
       'x-ms-version': '2016-07-11',
       'Authorization':
-          'type%3Dmaster%26ver%3D1.0%26sig%3D7P4vBDqx9cI9y0J8OdNuLDegbcgbQdRGcec8FG8il2I%3D',
-      'x-ms-date': 'Sun, 11 Oct 2020 18:15:00 GMT',
+          'type%3Dmaster%26ver%3D1.0%26sig%3DBka5NDZj%2BMabtoa1QtYQhJUTySZT71AY0N4cwwJom7U%3D',
+      'x-ms-date': 'Mon, 12 Oct 2020 17:02:19 GMT',
 //      'x-ms-documentdb-partitionkey': '["$userId"]'
     };
     try {
@@ -249,13 +250,13 @@ class AzureCosmosDB {
   }
 }
 
-void main() async {
-  AzureCosmosDB cosmosDB = AzureCosmosDB();
-  List<CartItems> list = await cosmosDB.displayCart(customerId: 'CUS149');
-  for(CartItems info in list){
-    print(info.id);
-    print(info.name);
-    print(info.price);
-    print(info.quantity);
-  }
-}
+//void main() async {
+//  AzureCosmosDB cosmosDB = AzureCosmosDB();
+//  List<CartItems> list = await cosmosDB.displayCart(customerId: 'CUS149');
+//  for(CartItems info in list){
+//    print(info.id);
+//    print(info.name);
+//    print(info.price);
+//    print(info.quantity);
+//  }
+//}
