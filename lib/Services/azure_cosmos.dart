@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:shopasai/Services/cart_items.dart';
 import 'package:shopasai/Services/check_list_info.dart';
 import 'package:shopasai/Services/product_detail.dart';
+import 'package:shopasai/Services/user_info.dart';
 
 import 'generate_auth_token.dart';
 
@@ -20,8 +21,8 @@ class AzureCosmosDB {
       'Accept': 'application/json',
       'x-ms-version': '2016-07-11',
       'Authorization':
-          'type%3Dmaster%26ver%3D1.0%26sig%3DBka5NDZj%2BMabtoa1QtYQhJUTySZT71AY0N4cwwJom7U%3D',
-      'x-ms-date': 'Mon, 12 Oct 2020 17:02:19 GMT',
+          'type%3Dmaster%26ver%3D1.0%26sig%3Dii%2Bim3M0Y446f4Rt9CAdl7%2FiP23LIWtsouA4RYHWULs%3D',
+      'x-ms-date': 'Tue, 13 Oct 2020 17:11:32 GMT',
 //      'x-ms-documentdb-partitionkey': '["$userId"]'
     };
     try {
@@ -57,8 +58,8 @@ class AzureCosmosDB {
       'Accept': 'application/json',
       'x-ms-version': '2016-07-11',
       'Authorization':
-          'type%3Dmaster%26ver%3D1.0%26sig%3DyVsEU9ZQfItoJ%2BW7xvq%2B63bH2baDb3CxBZKkBLChTpc%3D',
-      'x-ms-date': 'Sun, 11 Oct 2020 14:33:33 GMT',
+      'type%3Dmaster%26ver%3D1.0%26sig%3DkVosWHxgRJl5vvzTfFVm%2FMXUDvwvcmEVRllo79Y9hgg%3D',
+      'x-ms-date': 'Tue, 13 Oct 2020 17:13:54 GMT',
       'x-ms-documentdb-partitionkey': '["$customerId"]'
     };
     //Put Document
@@ -66,8 +67,8 @@ class AzureCosmosDB {
       'Accept': 'application/json',
       'x-ms-version': '2016-07-11',
       'Authorization':
-          'type%3Dmaster%26ver%3D1.0%26sig%3D1sj%2BgwU4husdr12MFR4UBwyZrq59jgDQWTF0DLrHf6s%3D',
-      'x-ms-date': 'Sun, 11 Oct 2020 14:34:08 GMT',
+          'type%3Dmaster%26ver%3D1.0%26sig%3Dd5udjBC2YkkMhKzi%2B8C2ZEXPPWjiY4ED94juXCKSias%3D',
+      'x-ms-date': 'Tue, 13 Oct 2020 17:15:55 GMT',
       'x-ms-documentdb-partitionkey': '["$customerId"]'
     };
 
@@ -102,8 +103,8 @@ class AzureCosmosDB {
       'Accept': 'application/json',
       'x-ms-version': '2016-07-11',
       'Authorization':
-          'type%3Dmaster%26ver%3D1.0%26sig%3DPjcpv6CsOJ5BHOPElpdoUbSLRl9OylSxGo1zNF%2FZb54%3D',
-      'x-ms-date': 'Sun, 11 Oct 2020 18:35:12 GMT',
+      'type%3Dmaster%26ver%3D1.0%26sig%3DkVosWHxgRJl5vvzTfFVm%2FMXUDvwvcmEVRllo79Y9hgg%3D',
+      'x-ms-date': 'Tue, 13 Oct 2020 17:13:54 GMT',
       'x-ms-documentdb-partitionkey': '["$customerId"]'
     };
     //Get All documents
@@ -111,8 +112,8 @@ class AzureCosmosDB {
       'Accept': 'application/json',
       'x-ms-version': '2016-07-11',
       'Authorization':
-      'type%3Dmaster%26ver%3D1.0%26sig%3DvV8TZs8nh9zWK6KDHglVh9bAnb8whW7VR2FSVm0gAKk%3D',
-      'x-ms-date': 'Sun, 11 Oct 2020 18:36:00 GMT',
+      'type%3Dmaster%26ver%3D1.0%26sig%3Dii%2Bim3M0Y446f4Rt9CAdl7%2FiP23LIWtsouA4RYHWULs%3D',
+      'x-ms-date': 'Tue, 13 Oct 2020 17:11:32 GMT',
 //      'x-ms-documentdb-partitionkey': '["$userId"]'
     };
     try {
@@ -166,8 +167,8 @@ class AzureCosmosDB {
       'Accept': 'application/json',
       'x-ms-version': '2016-07-11',
       'Authorization':
-          'type%3Dmaster%26ver%3D1.0%26sig%3DtIIsqrkwdDalh7awZphQ190KHSqGGN9t8fv%2F4n6JfkU%3D',
-      'x-ms-date': 'Mon, 12 Oct 2020 17:10:45 GMT',
+      'type%3Dmaster%26ver%3D1.0%26sig%3DkVosWHxgRJl5vvzTfFVm%2FMXUDvwvcmEVRllo79Y9hgg%3D',
+      'x-ms-date': 'Tue, 13 Oct 2020 17:13:54 GMT',
       'x-ms-documentdb-partitionkey': '["$customerId"]'
     };
     //Get all Documents
@@ -175,8 +176,8 @@ class AzureCosmosDB {
       'Accept': 'application/json',
       'x-ms-version': '2016-07-11',
       'Authorization':
-          'type%3Dmaster%26ver%3D1.0%26sig%3DBka5NDZj%2BMabtoa1QtYQhJUTySZT71AY0N4cwwJom7U%3D',
-      'x-ms-date': 'Mon, 12 Oct 2020 17:02:19 GMT',
+      'type%3Dmaster%26ver%3D1.0%26sig%3Dii%2Bim3M0Y446f4Rt9CAdl7%2FiP23LIWtsouA4RYHWULs%3D',
+      'x-ms-date': 'Tue, 13 Oct 2020 17:11:32 GMT',
 //      'x-ms-documentdb-partitionkey': '["$userId"]'
     };
     try {
@@ -246,6 +247,65 @@ class AzureCosmosDB {
     } catch (e) {
       print(e);
       return allCheckListItems;
+    }
+  }
+
+  Future<UserInfo> getUserDetails({String customerId}) async{
+    Map<String, String> httpHeaderGet = {
+      'Accept': 'application/json',
+      'x-ms-version': '2016-07-11',
+      'Authorization':
+      'type%3Dmaster%26ver%3D1.0%26sig%3DkVosWHxgRJl5vvzTfFVm%2FMXUDvwvcmEVRllo79Y9hgg%3D',
+      'x-ms-date': 'Tue, 13 Oct 2020 17:13:54 GMT',
+      'x-ms-documentdb-partitionkey': '["$customerId"]'
+
+    };
+    try{
+      var responseGet = await http.get(
+          'https://shopasai.documents.azure.com:443/dbs/ShopAsAI/colls/customers/docs/$customerId',
+          headers: httpHeaderGet);
+      if (responseGet.statusCode == 200) {
+        print(200);
+        var decodeData = jsonDecode(responseGet.body);
+        print(decodeData['Name']);
+        print(decodeData['phone']);
+        print(decodeData['email']);
+        return  UserInfo(
+          name: decodeData['Name'],
+          phNumber: decodeData['phone'],
+          email: decodeData['email'],
+        );
+      }else{
+        return UserInfo();
+      }
+    }catch(e){
+      return UserInfo();
+    }
+  }
+
+  Future<bool> checkUserAuthentication({String customerId}) async{
+    Map<String, String> httpHeaderGet = {
+      'Accept': 'application/json',
+      'x-ms-version': '2016-07-11',
+      'Authorization':
+      'type%3Dmaster%26ver%3D1.0%26sig%3DkVosWHxgRJl5vvzTfFVm%2FMXUDvwvcmEVRllo79Y9hgg%3D',
+      'x-ms-date': 'Tue, 13 Oct 2020 17:13:54 GMT',
+      'x-ms-documentdb-partitionkey': '["$customerId"]'
+
+    };
+    try{
+      var responseGet = await http.get(
+          'https://shopasai.documents.azure.com:443/dbs/ShopAsAI/colls/customers/docs/$customerId',
+          headers: httpHeaderGet);
+      if (responseGet.statusCode == 200) {
+        print(200);
+        return  true;
+      }else{
+        print('No');
+        return false;
+      }
+    }catch(e){
+      return false;
     }
   }
 }

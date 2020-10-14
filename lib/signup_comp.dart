@@ -259,9 +259,6 @@ class _signup_compState extends State<signup_comp> {
                           ),
                         ),
 
-
-
-
                         SizedBox(height: 50,),
 
                         FlatButton(

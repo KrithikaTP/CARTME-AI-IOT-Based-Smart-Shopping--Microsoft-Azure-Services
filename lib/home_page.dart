@@ -1,30 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:shopasai/Screens/cart_page.dart';
 import 'package:shopasai/Screens/tobuy_list.dart';
 import 'package:shopasai/Services/product_detail.dart';
 import 'package:shopasai/constants.dart';
+import 'package:shopasai/profile.dart';
+import 'package:shopasai/qr.dart';
+
+import 'Services/azure_cosmos.dart';
 
 class HomePage extends StatefulWidget {
+  final String customerId;
   final List<String> productName;
   final List<ProductDetail> listOfProducts;
 
-  HomePage({this.productName, this.listOfProducts});
+  HomePage({this.productName, this.listOfProducts, this.customerId});
 
   @override
   _HomePageState createState() => new _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  List<Widget> tabs = [];
   List<String> productName;
   List<ProductDetail> listOfProducts;
-  final tabs = [
-    ToBuyList(),
-    Container(
-      color: Colors.blueAccent,
-    ),
-    Container(
-      color: Colors.teal,
-    )
-  ];
+//  final tabs =
   Widget appBarTitle = new Text(
     "CartMe",
     style: TextStyle(
@@ -70,6 +69,13 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     productName = widget.productName;
     listOfProducts = widget.listOfProducts;
+    tabs = [
+      ToBuyList(
+        customerId: widget.customerId,
+      ),
+      QR_Code(),
+      profile()
+    ];
     super.initState();
     _IsSearching = false;
   }
@@ -79,7 +85,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       key: key,
-      appBar: buildBar(context),
+      appBar: buildBar(context, widget.customerId),
       body: chooseBody(_IsSearching, _currentIndex),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
@@ -127,6 +133,7 @@ class _HomePageState extends State<HomePage> {
           name: productName[i],
           index: i,
           listOfProducts: listOfProducts,
+          customerId: widget.customerId,
         );
         items.add(item);
       }
@@ -142,6 +149,7 @@ class _HomePageState extends State<HomePage> {
             name: name,
             index: i,
             listOfProducts: listOfProducts,
+            customerId: widget.customerId,
           );
           items.add(item);
         }
@@ -151,12 +159,21 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  Widget buildBar(BuildContext context) {
+  Widget buildBar(BuildContext context, String customerId) {
     return new AppBar(
         leading: IconButton(
-          icon: Icon(Icons.shopping_cart,color: Colors.white),
+          icon: Icon(Icons.shopping_cart, color: Colors.white),
           iconSize: 30.0,
-
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => CartPage(
+                  customerId: customerId,
+                ),
+              ),
+            );
+          },
         ),
         centerTitle: true,
         elevation: 0.0,
@@ -227,10 +244,11 @@ class _HomePageState extends State<HomePage> {
 }
 
 class ChildItem extends StatelessWidget {
+  final String customerId;
   final String name;
   final int index;
   final List<ProductDetail> listOfProducts;
-  ChildItem({this.name, this.index, this.listOfProducts});
+  ChildItem({this.name, this.index, this.listOfProducts, this.customerId});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -240,6 +258,7 @@ class ChildItem extends StatelessWidget {
       child: Container(
         color: Colors.white,
         height: 100,
+        padding: EdgeInsets.all(12.0),
         child: Column(
           children: [
             Row(
@@ -283,13 +302,21 @@ class ChildItem extends StatelessWidget {
                 ),
                 Expanded(
                   flex: 1,
-                  child: CircleAvatar(
-                    radius: 15.0,
-                    backgroundColor: Colors.green,
-                    child: Icon(
-                      Icons.add,
-                      color: Colors.white,
-                      size: 20.0,
+                  child: GestureDetector(
+                    onTap: () {
+                      AzureCosmosDB cosmosDB = AzureCosmosDB();
+                      cosmosDB.addToCheckList(
+                          customerId: customerId,
+                          productId: listOfProducts[index].id);
+                    },
+                    child: CircleAvatar(
+                      radius: 15.0,
+                      backgroundColor: Colors.green,
+                      child: Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 20.0,
+                      ),
                     ),
                   ),
                 )

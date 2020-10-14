@@ -5,6 +5,10 @@ import 'package:shopasai/Services/product_detail.dart';
 import 'package:shopasai/home_page.dart';
 
 class LoadingMenu extends StatefulWidget {
+  final String customerId;
+
+  LoadingMenu({this.customerId});
+
   @override
   _LoadingMenuState createState() => _LoadingMenuState();
 }
@@ -25,6 +29,7 @@ class _LoadingMenuState extends State<LoadingMenu> {
         builder: (context) => HomePage(
           productName: productName,
           listOfProducts: listOfProducts,
+          customerId: widget.customerId,
         ),
       ),
     );

@@ -1,190 +1,109 @@
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shopasai/menu.dart';
 
-String _comp = '';
-String _companyname='';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:shopasai/Services/user_info.dart';
+
+import 'Services/azure_cosmos.dart';
+
 class profile extends StatefulWidget {
   @override
   _profileState createState() => _profileState();
 }
 
 class _profileState extends State<profile> {
-  getUserInfogetChats() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    _comp = prefs.getString('comp');
-    _companyname =prefs.getString('company_name');
-    //print(Constants.myName);
-
+  bool showSpinner = true;
+  String name =  'Sunil';
+  String email =  'sunil@outlook.com';
+  int phNumber = 987654321;
+//  UserInfo info = UserInfo(name: ' ',phNumber: 0,email: ' ');
+  AzureCosmosDB cosmosDB = AzureCosmosDB();
+  void loadDetails() async {
+    UserInfo info = await cosmosDB.getUserDetails(customerId: 'CUS149');
+    print(info.name);
+    print(info.email);
+    print(info.phNumber);
+//    name = info.name;
+//    email = info.email;
+//    phNumber = info.phNumber;
     setState(() {
-      _comp = (prefs.getString('comp') ?? '');
-      _companyname = (prefs.getString('company_name') ?? '');
-      print('companyyy');
-      print(_companyname);
+      showSpinner = false;
     });
   }
 
   @override
   void initState() {
-
     super.initState();
-    getUserInfogetChats();
-
+    loadDetails();
   }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: MaterialApp(
-        home: Scaffold(
-          appBar: AppBar(
-            title: Text(
-              'Profile',
+    return ModalProgressHUD(
+      inAsyncCall: showSpinner,
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('image/sign.png'), fit: BoxFit.cover),
+        ),
+        child: SafeArea(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            CircleAvatar(
+              radius: 50.0,
+              backgroundImage: NetworkImage(
+                  'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
+            ),
+            Text(
+              name,
               style: TextStyle(
-                color: Colors.black,
-                fontSize: 30.0,
+                fontFamily: 'Pacifico',
+                fontSize: 40.0,
+                color: Colors.black87,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            elevation: 0.0,
-            centerTitle: true,
-            backgroundColor: Colors.transparent,
-          ),
-          extendBodyBehindAppBar: true,
-          body: Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('image/sign.png'),
-                  fit: BoxFit.cover),
+            SizedBox(
+              height: 20.0,
+              width: 150.0,
+              child: Divider(
+                color: Colors.teal.shade100,
+              ),
             ),
-            padding: EdgeInsets.all(15.0),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 90,
-                ),
-
-                SizedBox(
-                  height: 30,
-                ),
-                Container(
-                  width: 140.0,
-                  height: 140.0,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image:NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQuIM2Kwi_1IOCBHfB3z2CZWpjl7igvaMpYZw&usqp=CAU'),
-                        fit: BoxFit.cover),
-                    borderRadius: BorderRadius.circular(80.0),
-                    border: Border.all(
-                      color: Colors.blueGrey,
-                      width: 2.0,
+            Card(
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.phone,
+                    color: Colors.teal,
+                  ),
+                  title: Text(
+                    phNumber.toString(),
+                    style: TextStyle(
+                      color: Colors.teal.shade900,
+                      fontFamily: 'Source Sans Pro',
+                      fontSize: 20.0,
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-
-                Text(
-                  'Karthikeyan',
-                  style: TextStyle(
-                    fontSize: 25.0,
-                    color: Colors.black54,
+                )),
+            Card(
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.email,
+                    color: Colors.teal,
                   ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                SizedBox(
-                  width: 400.0,
-                  height: 1.0,
-                  child: const DecoratedBox(
-                    decoration:
-                    const BoxDecoration(color: Colors.black87),
+                  title: Text(
+                    email,
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.teal.shade900,
+                        fontFamily: 'Source Sans Pro'),
                   ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  'ktv0303@gmail.com',
-                  style: TextStyle(
-                    fontSize: 25.0,
-                    color: Colors.black,
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  '15,gandhi nagar chennai',
-                  style: TextStyle(
-                    fontSize: 25.0,
-                    color: Colors.black,
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),Text(
-                  '123456789',
-                  style: TextStyle(
-                    fontSize: 25.0,
-                    color: Colors.black,
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                SizedBox(
-                  width: 400.0,
-                  height: 1.0,
-                  child: const DecoratedBox(
-                    decoration:
-                    const BoxDecoration(color: Colors.black87),
-                  ),
-                ),
-
-                SizedBox(
-                  height: 15,
-                ),
-                GestureDetector(
-                  onTap: () async {
-                    SharedPreferences prefs =
-                    await SharedPreferences.getInstance();
-                    prefs.remove('comp');
-                    SharedPreferences pref =
-                    await SharedPreferences.getInstance();
-                    prefs.remove('company_name');
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => menu()));
-                  },
-                  child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      child: Icon(Icons.exit_to_app)),
-                ),
-                Text(
-                  'Signout',
-                  style: TextStyle(
-                    fontSize: 25.0,
-                    color: Colors.black,
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                SizedBox(
-                  width: 400.0,
-                  height: 1.0,
-                  child: const DecoratedBox(
-                    decoration:
-                    const BoxDecoration(color: Colors.black87),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+                ))
+          ],
+        )),
       ),
     );
   }

@@ -5,6 +5,10 @@ import 'package:shopasai/Services/check_list_info.dart';
 import 'package:shopasai/constants.dart';
 
 class ToBuyList extends StatefulWidget {
+  final String customerId;
+
+  ToBuyList({this.customerId});
+
   @override
   _ToBuyListState createState() => _ToBuyListState();
 }
@@ -50,7 +54,7 @@ class _ToBuyListState extends State<ToBuyList> {
             flex: 1,
             child: GestureDetector(
               onTap: () async{
-                checkListItems = await cosmosDB.checkListDisplay(customerId: 'CUS149');
+                checkListItems = await cosmosDB.checkListDisplay(customerId: widget.customerId);
                 setState(() {
 
                 });
@@ -80,11 +84,18 @@ class _ToBuyListState extends State<ToBuyList> {
                 // ignore: missing_return
                 itemBuilder: (context, index) {
                   return ListTile(
-                    trailing: CircleAvatar(
-                      backgroundColor: Colors.redAccent,
-                      radius: 12.0,
-                      child: Icon(Icons.remove,color: Colors.white,
-                        size: 12.0,)
+                    trailing: GestureDetector(
+                      onTap: (){
+                        setState(() {
+                          checkListItems.removeAt(index);
+                        });
+                      },
+                      child: CircleAvatar(
+                        backgroundColor: Colors.redAccent,
+                        radius: 12.0,
+                        child: Icon(Icons.remove,color: Colors.white,
+                          size: 12.0,)
+                      ),
                     ),
                     title: Text(
                       '   ${checkListItems[index].name}        (${checkListItems[index].count})',

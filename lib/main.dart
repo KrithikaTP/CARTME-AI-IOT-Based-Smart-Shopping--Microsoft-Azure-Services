@@ -4,6 +4,7 @@ import 'package:shopasai/Screens/loadingMenu.dart';
 import 'package:shopasai/home_page.dart';
 import 'package:shopasai/share.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shopasai/signin_comp.dart';
 import 'SplashScreen.dart';
 
 void main() => runApp(MyApp());
@@ -78,7 +79,7 @@ class _MyAppState extends State<MyApp> {
         ),
         //home: _email == null ? SplashScreen() : menu_teacher());
 
-        home: LoadingMenu());
+        home: signin_comp());
     //home: fun());
   }
 }
