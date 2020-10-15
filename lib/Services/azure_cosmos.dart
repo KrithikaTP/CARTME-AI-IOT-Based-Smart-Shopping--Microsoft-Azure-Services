@@ -13,21 +13,19 @@ class AzureCosmosDB {
 
   Future<List<ProductDetail>> products() async {
     List<ProductDetail> productsList = [];
-//    GenerateAuthToken authToken = GenerateAuthToken();
-//    Map<String, String> authentication = authToken.createToken();
-//    print(authentication['authToken']);
+    GenerateAuthToken authToken = GenerateAuthToken(resourceId: '<Your RESOURCE ID>',resourceType: '<YOUR RESOURCE TYPE>',verb: '<GET/POST/PUT>');
+    Map<String, String> authentication = authToken.createToken();
     //Get All Documents
     Map<String, String> httpHeader = {
       'Accept': 'application/json',
       'x-ms-version': '2016-07-11',
       'Authorization':
-          'type%3Dmaster%26ver%3D1.0%26sig%3Dii%2Bim3M0Y446f4Rt9CAdl7%2FiP23LIWtsouA4RYHWULs%3D',
-      'x-ms-date': 'Tue, 13 Oct 2020 17:11:32 GMT',
-//      'x-ms-documentdb-partitionkey': '["$userId"]'
+      authentication['authToken'],
+      'x-ms-date': authentication['date'],
     };
     try {
       var response = await http.get(
-          'https://shopasai.documents.azure.com:443/dbs/ShopAsAI/colls/products/docs',
+          'https://<YOUR COSMOS DB URI>/dbs/ShopAsAI/colls/products/docs',
           headers: httpHeader);
       print(response.statusCode);
       if (response.statusCode == 200) {
@@ -39,7 +37,6 @@ class AzureCosmosDB {
               name: decodeData['Documents'][i]['name'],
               imageUrl: decodeData['Documents'][i]['imageUrl'],
           price: decodeData['Documents'][i]['price']);
-//              print(decodeData['Documents'][i]['id'] + ' ' +decodeData['Documents'][i]['name'] + ' ' +decodeData['Documents'][i]['imageUrl']);
           productsList.add(productDetail);
         }
         return productsList;
@@ -53,13 +50,15 @@ class AzureCosmosDB {
   }
 
   Future<void> addToCheckList({String customerId, String productId}) async {
+    GenerateAuthToken authToken = GenerateAuthToken(resourceId: '<Your RESOURCE ID>',resourceType: '<YOUR RESOURCE TYPE>',verb: '<GET/POST/PUT>');
+    Map<String, String> authentication = authToken.createToken();
     //Get Document
     Map<String, String> httpHeaderGet = {
       'Accept': 'application/json',
       'x-ms-version': '2016-07-11',
       'Authorization':
-      'type%3Dmaster%26ver%3D1.0%26sig%3DkVosWHxgRJl5vvzTfFVm%2FMXUDvwvcmEVRllo79Y9hgg%3D',
-      'x-ms-date': 'Tue, 13 Oct 2020 17:13:54 GMT',
+      authentication['authToken'],
+      'x-ms-date': authentication['date'],
       'x-ms-documentdb-partitionkey': '["$customerId"]'
     };
     //Put Document
@@ -67,14 +66,14 @@ class AzureCosmosDB {
       'Accept': 'application/json',
       'x-ms-version': '2016-07-11',
       'Authorization':
-          'type%3Dmaster%26ver%3D1.0%26sig%3Dd5udjBC2YkkMhKzi%2B8C2ZEXPPWjiY4ED94juXCKSias%3D',
-      'x-ms-date': 'Tue, 13 Oct 2020 17:15:55 GMT',
+      authentication['authToken'],
+      'x-ms-date': authentication['date'],
       'x-ms-documentdb-partitionkey': '["$customerId"]'
     };
 
     try {
       var responseGet = await http.get(
-          'https://shopasai.documents.azure.com:443/dbs/ShopAsAI/colls/customers/docs/$customerId',
+          'https://<YOUR COSMOS DB URI>/dbs/ShopAsAI/colls/customers/docs/$customerId',
           headers: httpHeaderGet);
       if (responseGet.statusCode == 200) {
         var decodeData = jsonDecode(responseGet.body);
@@ -82,7 +81,7 @@ class AzureCosmosDB {
         presentCheckList.add(productId);
         decodeData['checkList'] = presentCheckList;
         var responsePut = await http.put(
-            'https://shopasai.documents.azure.com:443/dbs/ShopAsAI/colls/customers/docs/$customerId',
+            'https://<YOUR COSMOS DB URI>/dbs/ShopAsAI/colls/customers/docs/$customerId',
             headers: httpHeaderPut,
             body: jsonEncode(decodeData));
         print('hI');
@@ -96,6 +95,8 @@ class AzureCosmosDB {
   }
 
   Future<List<CartItems>> displayCart({String customerId}) async {
+    GenerateAuthToken authToken = GenerateAuthToken(resourceId: '<Your RESOURCE ID>',resourceType: '<YOUR RESOURCE TYPE>',verb: '<GET/POST/PUT>');
+    Map<String, String> authentication = authToken.createToken();
     List<CartItems> cart = [];
     Map<dynamic, int> map = {};
     //Get Document
@@ -103,8 +104,8 @@ class AzureCosmosDB {
       'Accept': 'application/json',
       'x-ms-version': '2016-07-11',
       'Authorization':
-      'type%3Dmaster%26ver%3D1.0%26sig%3DkVosWHxgRJl5vvzTfFVm%2FMXUDvwvcmEVRllo79Y9hgg%3D',
-      'x-ms-date': 'Tue, 13 Oct 2020 17:13:54 GMT',
+      authentication['authToken'],
+      'x-ms-date': authentication['date'],
       'x-ms-documentdb-partitionkey': '["$customerId"]'
     };
     //Get All documents
@@ -112,17 +113,17 @@ class AzureCosmosDB {
       'Accept': 'application/json',
       'x-ms-version': '2016-07-11',
       'Authorization':
-      'type%3Dmaster%26ver%3D1.0%26sig%3Dii%2Bim3M0Y446f4Rt9CAdl7%2FiP23LIWtsouA4RYHWULs%3D',
-      'x-ms-date': 'Tue, 13 Oct 2020 17:11:32 GMT',
-//      'x-ms-documentdb-partitionkey': '["$userId"]'
+      authentication['authToken'],
+      'x-ms-date': authentication['date'],
+
     };
     try {
       var response = await http.get(
-          'https://shopasai.documents.azure.com:443/dbs/ShopAsAI/colls/products/docs',
+          'https://<YOUR COSMOS DB URI>/dbs/ShopAsAI/colls/products/docs',
           headers: httpHeader);
       var data = jsonDecode(response.body);
       var responseCustomer = await http.get(
-          'https://shopasai.documents.azure.com:443/dbs/ShopAsAI/colls/customers/docs/$customerId',
+          'https://<YOUR COSMOS DB URI>/dbs/ShopAsAI/colls/customers/docs/$customerId',
           headers: httpHeaderCustomer);
       if (responseCustomer.statusCode == 200) {
         var decodeData = jsonDecode(responseCustomer.body);
@@ -159,6 +160,8 @@ class AzureCosmosDB {
   }
 
   Future<List<CheckListInfo>> checkListDisplay({String customerId}) async {
+    GenerateAuthToken authToken = GenerateAuthToken(resourceId: '<Your RESOURCE ID>',resourceType: '<YOUR RESOURCE TYPE>',verb: '<GET/POST/PUT>');
+    Map<String, String> authentication = authToken.createToken();
     List<CheckListInfo> allCheckListItems = [];
     Map<dynamic, int> mapCart = {};
     Map<dynamic, int> mapCheckList = {};
@@ -167,8 +170,8 @@ class AzureCosmosDB {
       'Accept': 'application/json',
       'x-ms-version': '2016-07-11',
       'Authorization':
-      'type%3Dmaster%26ver%3D1.0%26sig%3DkVosWHxgRJl5vvzTfFVm%2FMXUDvwvcmEVRllo79Y9hgg%3D',
-      'x-ms-date': 'Tue, 13 Oct 2020 17:13:54 GMT',
+      authentication['authToken'],
+      'x-ms-date': authentication['date'],
       'x-ms-documentdb-partitionkey': '["$customerId"]'
     };
     //Get all Documents
@@ -176,17 +179,17 @@ class AzureCosmosDB {
       'Accept': 'application/json',
       'x-ms-version': '2016-07-11',
       'Authorization':
-      'type%3Dmaster%26ver%3D1.0%26sig%3Dii%2Bim3M0Y446f4Rt9CAdl7%2FiP23LIWtsouA4RYHWULs%3D',
-      'x-ms-date': 'Tue, 13 Oct 2020 17:11:32 GMT',
-//      'x-ms-documentdb-partitionkey': '["$userId"]'
+      authentication['authToken'],
+      'x-ms-date': authentication['date'],
+
     };
     try {
       var response = await http.get(
-          'https://shopasai.documents.azure.com:443/dbs/ShopAsAI/colls/products/docs',
+          'https://<YOUR COSMOS DB URI>/dbs/ShopAsAI/colls/products/docs',
           headers: httpHeader);
       var data = jsonDecode(response.body);
       var responseCustomer = await http.get(
-          'https://shopasai.documents.azure.com:443/dbs/ShopAsAI/colls/customers/docs/$customerId',
+          'https://<YOUR COSMOS DB URI>/dbs/ShopAsAI/colls/customers/docs/$customerId',
           headers: httpHeaderCustomer);
       if (responseCustomer.statusCode == 200) {
         var decodeData = jsonDecode(responseCustomer.body);
@@ -251,18 +254,20 @@ class AzureCosmosDB {
   }
 
   Future<UserInfo> getUserDetails({String customerId}) async{
+    GenerateAuthToken authToken = GenerateAuthToken(resourceId: '<Your RESOURCE ID>',resourceType: '<YOUR RESOURCE TYPE>',verb: '<GET/POST/PUT>');
+    Map<String, String> authentication = authToken.createToken();
     Map<String, String> httpHeaderGet = {
       'Accept': 'application/json',
       'x-ms-version': '2016-07-11',
       'Authorization':
-      'type%3Dmaster%26ver%3D1.0%26sig%3DkVosWHxgRJl5vvzTfFVm%2FMXUDvwvcmEVRllo79Y9hgg%3D',
-      'x-ms-date': 'Tue, 13 Oct 2020 17:13:54 GMT',
+      authentication['authToken'],
+      'x-ms-date': authentication['date'],
       'x-ms-documentdb-partitionkey': '["$customerId"]'
 
     };
     try{
       var responseGet = await http.get(
-          'https://shopasai.documents.azure.com:443/dbs/ShopAsAI/colls/customers/docs/$customerId',
+          'https://<YOUR COSMOS DB URI>/dbs/ShopAsAI/colls/customers/docs/$customerId',
           headers: httpHeaderGet);
       if (responseGet.statusCode == 200) {
         print(200);
@@ -284,18 +289,20 @@ class AzureCosmosDB {
   }
 
   Future<bool> checkUserAuthentication({String customerId}) async{
+    GenerateAuthToken authToken = GenerateAuthToken(resourceId: '<Your RESOURCE ID>',resourceType: '<YOUR RESOURCE TYPE>',verb: '<GET/POST/PUT>');
+    Map<String, String> authentication = authToken.createToken();
     Map<String, String> httpHeaderGet = {
       'Accept': 'application/json',
       'x-ms-version': '2016-07-11',
       'Authorization':
-      'type%3Dmaster%26ver%3D1.0%26sig%3DkVosWHxgRJl5vvzTfFVm%2FMXUDvwvcmEVRllo79Y9hgg%3D',
-      'x-ms-date': 'Tue, 13 Oct 2020 17:13:54 GMT',
+      authentication['authToken'],
+      'x-ms-date': authentication['date'],
       'x-ms-documentdb-partitionkey': '["$customerId"]'
 
     };
     try{
       var responseGet = await http.get(
-          'https://shopasai.documents.azure.com:443/dbs/ShopAsAI/colls/customers/docs/$customerId',
+          'https://<YOUR COSMOS DB URI>/dbs/ShopAsAI/colls/customers/docs/$customerId',
           headers: httpHeaderGet);
       if (responseGet.statusCode == 200) {
         print(200);
@@ -310,13 +317,4 @@ class AzureCosmosDB {
   }
 }
 
-//void main() async {
-//  AzureCosmosDB cosmosDB = AzureCosmosDB();
-//  List<CartItems> list = await cosmosDB.displayCart(customerId: 'CUS149');
-//  for(CartItems info in list){
-//    print(info.id);
-//    print(info.name);
-//    print(info.price);
-//    print(info.quantity);
-//  }
-//}
+

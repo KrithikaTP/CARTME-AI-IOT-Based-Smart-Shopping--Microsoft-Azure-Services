@@ -15,7 +15,7 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  int totalBill  = 0;
+  int totalBill = 0;
   AzureCosmosDB cosmosDB = AzureCosmosDB();
   bool showSpinner = true;
   List<CartItems> cartItems = [];
@@ -26,7 +26,7 @@ class _CartPageState extends State<CartPage> {
   );
   void loadCart() async {
     cartItems = await cosmosDB.displayCart(customerId: widget.customerId);
-    for(CartItems item in cartItems){
+    for (CartItems item in cartItems) {
       totalBill += item.price;
     }
     setState(() {
@@ -182,8 +182,15 @@ class _CartPageState extends State<CartPage> {
               ),
               Expanded(
                 child: GestureDetector(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Payment_Paytym()));
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PaymentPaytym(
+                          costTotal: totalBill,
+                        ),
+                      ),
+                    );
                   },
                   child: Card(
                     elevation: 15.0,
@@ -195,8 +202,10 @@ class _CartPageState extends State<CartPage> {
                       child: Text(
                         'Total: Rs.$totalBill',
                         textAlign: TextAlign.center,
-                        style:
-                            TextStyle(color: Colors.white, fontFamily: 'CarterOne',fontSize: 18.0),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'CarterOne',
+                            fontSize: 18.0),
                       ),
                     ),
                   ),

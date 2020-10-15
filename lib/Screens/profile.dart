@@ -1,31 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:shopasai/Services/user_info.dart';
+import '../Services/azure_cosmos.dart';
 
-import 'Services/azure_cosmos.dart';
+class Profile extends StatefulWidget {
+  final String customerId;
 
-class profile extends StatefulWidget {
+  Profile({this.customerId});
+
   @override
-  _profileState createState() => _profileState();
+  ProfilePage createState() => ProfilePage();
 }
 
-class _profileState extends State<profile> {
+class ProfilePage extends State<Profile> {
   bool showSpinner = true;
-  String name =  'Sunil';
-  String email =  'sunil@outlook.com';
-  int phNumber = 987654321;
-//  UserInfo info = UserInfo(name: ' ',phNumber: 0,email: ' ');
+  String name;
+  String email;
+  int phNumber;
+
   AzureCosmosDB cosmosDB = AzureCosmosDB();
   void loadDetails() async {
-    UserInfo info = await cosmosDB.getUserDetails(customerId: 'CUS149');
+    UserInfo info =
+        await cosmosDB.getUserDetails(customerId: widget.customerId);
     print(info.name);
     print(info.email);
     print(info.phNumber);
-//    name = info.name;
-//    email = info.email;
-//    phNumber = info.phNumber;
+    name = info.name;
+    email = info.email;
+    phNumber = info.phNumber;
     setState(() {
       showSpinner = false;
     });

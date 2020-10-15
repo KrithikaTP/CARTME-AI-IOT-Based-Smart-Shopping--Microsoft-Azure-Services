@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:shopasai/Services/azure_cosmos.dart';
 import 'package:shopasai/Services/product_detail.dart';
-import 'package:shopasai/home_page.dart';
+
+import 'home_page.dart';
 
 class LoadingMenu extends StatefulWidget {
   final String customerId;
@@ -47,9 +48,10 @@ class _LoadingMenuState extends State<LoadingMenu> {
   @override
   Widget build(BuildContext context) {
     return ModalProgressHUD(
-        inAsyncCall: showSpinner,
-        child: Container(
-          color: Colors.white,
-        ));
+      inAsyncCall: showSpinner,
+      child: Container(
+        color: Colors.white,
+      ),
+    );
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopasai/Services/azure_cosmos.dart';
 import 'package:shopasai/Services/check_list_info.dart';
-import 'package:shopasai/constants.dart';
+import 'package:shopasai/Services/constants.dart';
 
 class ToBuyList extends StatefulWidget {
   final String customerId;
@@ -53,12 +53,11 @@ class _ToBuyListState extends State<ToBuyList> {
           Expanded(
             flex: 1,
             child: GestureDetector(
-              onTap: () async{
-                checkListItems = await cosmosDB.checkListDisplay(customerId: widget.customerId);
-                setState(() {
-
-                });
-                for(CheckListInfo info in checkListItems){
+              onTap: () async {
+                checkListItems = await cosmosDB.checkListDisplay(
+                    customerId: widget.customerId);
+                setState(() {});
+                for (CheckListInfo info in checkListItems) {
                   print(info.name);
                   print(info.isChecked);
                 }
@@ -85,25 +84,31 @@ class _ToBuyListState extends State<ToBuyList> {
                 itemBuilder: (context, index) {
                   return ListTile(
                     trailing: GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         setState(() {
                           checkListItems.removeAt(index);
-                        });
+                        }
+                        );
                       },
                       child: CircleAvatar(
-                        backgroundColor: Colors.redAccent,
-                        radius: 12.0,
-                        child: Icon(Icons.remove,color: Colors.white,
-                          size: 12.0,)
-                      ),
+                          backgroundColor: Colors.redAccent,
+                          radius: 12.0,
+                          child: Icon(
+                            Icons.remove,
+                            color: Colors.white,
+                            size: 12.0,
+                          )),
                     ),
                     title: Text(
                       '   ${checkListItems[index].name}        (${checkListItems[index].count})',
                       style: TextStyle(
-                        decoration: (checkListItems[index].isChecked)? TextDecoration.lineThrough:TextDecoration.none,
-                          color: kDoctorPrimaryColor, fontFamily: 'CarterOne',
-                      fontWeight: FontWeight.w100,
-                      fontSize: 15.0),
+                          decoration: (checkListItems[index].isChecked)
+                              ? TextDecoration.lineThrough
+                              : TextDecoration.none,
+                          color: kDoctorPrimaryColor,
+                          fontFamily: 'CarterOne',
+                          fontWeight: FontWeight.w100,
+                          fontSize: 15.0),
                     ),
                   );
                 },

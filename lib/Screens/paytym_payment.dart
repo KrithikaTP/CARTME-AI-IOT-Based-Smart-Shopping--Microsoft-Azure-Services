@@ -4,16 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:paytm/paytm.dart';
 import 'package:flutter_html_view/flutter_html_view.dart';
-import '../constants.dart';
+import '../Services/constants.dart';
 
-void main() => runApp(Payment_Paytym());
+void main() => runApp(PaymentPaytym());
 
-class Payment_Paytym extends StatefulWidget {
+class PaymentPaytym extends StatefulWidget {
+  final int costTotal;
+
+  PaymentPaytym({this.costTotal});
+
   @override
-  _Payment_PaytymState createState() => _Payment_PaytymState();
+  _PaymentPaytymState createState() => _PaymentPaytymState();
 }
 
-class _Payment_PaytymState extends State<Payment_Paytym> {
+class _PaymentPaytymState extends State<PaymentPaytym> {
   String payment_response = null;
   Widget appBarTitle = new Text(
     "CartMe",
@@ -26,11 +30,7 @@ class _Payment_PaytymState extends State<Payment_Paytym> {
   String website = "DEFAULT";
   bool testing = false;
 
-  //Testing
-  // String mid = "TEST_MID_HERE";
-  // String PAYTM_MERCHANT_KEY = "TES_KEY_HERE";
-  // String website = "WEBSTAGING";
-  // bool testing = true;
+
 
   double amount = 1;
   bool loading = false;
@@ -54,7 +54,6 @@ class _Payment_PaytymState extends State<Payment_Paytym> {
               colors: [
                 Color(0xFF1A2980),
                 Color(0xFF26D0CE),
-//                Color(0xff611cdf),
               ],
             ),
           ),
@@ -69,7 +68,7 @@ class _Payment_PaytymState extends State<Payment_Paytym> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
 
-                Text('Your Total Rs.110',style: TextStyle(color: kDoctorPrimaryColor,wordSpacing: 1.0,fontSize: 40.0,fontFamily: 'CarterOne'),),
+                Text('Your Total Rs.(${widget.costTotal})',style: TextStyle(color: kDoctorPrimaryColor,wordSpacing: 1.0,fontSize: 40.0,fontFamily: 'CarterOne'),),
                 SizedBox(
                   height: 10,
                 ),
@@ -79,14 +78,7 @@ class _Payment_PaytymState extends State<Payment_Paytym> {
                 payment_response != null
                     ? new HtmlView(data: payment_response)
                     : Container(),
-//                loading
-//                    ? Center(
-//                        child: Container(
-//                            width: 50,
-//                            height: 50,
-//                            child: CircularProgressIndicator()),
-//                      )
-//                    : Container(),
+
                 RaisedButton(
                   onPressed: () {
                     //Firstly Generate CheckSum bcoz Paytm Require this

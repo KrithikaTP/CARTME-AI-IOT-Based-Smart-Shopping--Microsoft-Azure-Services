@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shopasai/Screens/cart_page.dart';
+import 'package:shopasai/Screens/profile.dart';
+import 'package:shopasai/Screens/qr_code.dart';
 import 'package:shopasai/Screens/tobuy_list.dart';
 import 'package:shopasai/Services/product_detail.dart';
-import 'package:shopasai/constants.dart';
-import 'package:shopasai/profile.dart';
-import 'package:shopasai/qr.dart';
 
-import 'Services/azure_cosmos.dart';
+
+import '../Services/azure_cosmos.dart';
 
 class HomePage extends StatefulWidget {
   final String customerId;
@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
         customerId: widget.customerId,
       ),
       QR_Code(),
-      profile()
+      Profile( customerId: widget.customerId,)
     ];
     super.initState();
     _IsSearching = false;
