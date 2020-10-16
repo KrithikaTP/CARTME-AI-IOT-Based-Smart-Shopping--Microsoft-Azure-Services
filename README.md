@@ -89,8 +89,8 @@ Add a mock data(for customers) as in the follwing prescribed format
 Add a mock data(for products) as in the follwing prescribed format
 ```
 {
-    "id": "PROD01",
-    "productId": "PROD01",
+    "id": "2345601",
+    "productId": "2345601",
     "name": "Aqua Fresh Perfume",
     "price": 150,
     "month": "05",
