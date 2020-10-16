@@ -131,3 +131,25 @@ Go to the Power BI dashboard and set up a simple Line Graph Chart and Card with 
 ![](https://tutorials-raspberrypi.de/wp-content/uploads/Raspberry-Pi-HX711-Steckplatine-600x342.png)
 ### 2) Connect the V2 Camera in the Camera port of Raspberry Pi as shown below
 ![](https://www.allaboutcircuits.com/uploads/articles/raspberry-pi-camera-2.png?v=1470886330073)
+
+### Prerequisite
+* Clone the 'Smart_Trolley_Raspberry_Pi' folder in Raspberry Pi
+* Install the following packages in Raspberry Pi.
+* Launch the terminal and install 
+```sh
+pip install -r requirements.txt
+```
+### Set your AZURE Credentials 
+* Open the config.py file and change the following details from your Azure Portal for Cosmos DB.
+```sh
+settings = {
+    'host': os.environ.get('ACCOUNT_HOST', '<YOUR HOST NAME>'),
+    'master_key': os.environ.get('ACCOUNT_KEY', 'YOUR ACCOUNT MASTER KEY'),
+    'database_id': os.environ.get('COSMOS_DATABASE', '<YOUR DATABASE ID>'),
+    'container_id': os.environ.get('COSMOS_CONTAINER', '<YOUR CONTAINER ID>'),
+}
+```
+* Open the powerBiStats.py file and change the following details from your Azure IOT HUB Portal.
+```sh
+CONNECTION_STRING = "<YOUR CONNECTION STRING>"
+```
