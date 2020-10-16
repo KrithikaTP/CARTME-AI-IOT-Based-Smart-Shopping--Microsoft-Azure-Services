@@ -1,16 +1,11 @@
-# shopasai
+# CARTME- AI-IOT Based Smart Shopping Microsoft Azure Services
 
-A new Flutter application.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
+* [About the Project](#about-the-project)
+* [Built With](#built-with)
+* [Set Up the Azure Backend](#set-up-the-azure-backend)
+* [Connecting the sensors with Raspberry Pi](#connecting-the-sensors-with-raspberry-Pi)
+* [How to Run Bin Part Using Raspberry Pi](#how-to-run-bin-part-using-raspberry-pi)
+* [Run the Flutter App](#run-the-flutter-app)
