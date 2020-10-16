@@ -195,7 +195,7 @@ String masterKey = '<YOUR MASTER KEY(Cosmos DB)>';
 GenerateAuthToken authToken = GenerateAuthToken(resourceId: '<Your RESOURCE ID>',resourceType: '<YOUR RESOURCE TYPE>',verb: '<GET/POST/PUT>');
 ```
 Eg: 
-For a resource Id 'https://{{DocumentDBHost}}/dbs/ShopAsAI/colls/products/docs', the verb is 'GET', resourceType is 'docs'.
+For a resource Id 'https://<YOUR COSMOS DB URI>/dbs/ShopAsAI/colls/products/docs', the verb is 'GET', resourceType is 'docs'.
 
 * Clone the folder except the 'Smart_Trolley_Raspberry_Pi'.
 * Pub Get the dependencies.
