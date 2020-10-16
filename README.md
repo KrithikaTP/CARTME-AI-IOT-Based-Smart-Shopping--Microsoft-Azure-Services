@@ -132,7 +132,7 @@ Go to the Power BI dashboard and set up a simple Line Graph Chart and Card with 
 ### 2) Connect the V2 Camera in the Camera port of Raspberry Pi as shown below
 ![](https://www.allaboutcircuits.com/uploads/articles/raspberry-pi-camera-2.png?v=1470886330073)
 
-## How to Run =Smart Trolley Using Raspberry Pi
+## How to Run Smart Trolley Using Raspberry Pi
 ### Prerequisite
 * Clone the 'Smart_Trolley_Raspberry_Pi' folder in Raspberry Pi
 * Install the following packages in Raspberry Pi.
@@ -189,3 +189,10 @@ python powerBiStats.py
 ```sh
 String masterKey = '<YOUR MASTER KEY(Cosmos DB)>';
 ```
+* Open the azure_cosmos.dart and change the following details from your Azure Cosmos DB Portal for each function inside the file.
+```
+<YOUR COSMOS DB URI> 
+GenerateAuthToken authToken = GenerateAuthToken(resourceId: '<Your RESOURCE ID>',resourceType: '<YOUR RESOURCE TYPE>',verb: '<GET/POST/PUT>');
+```
+Eg: 
+For a resource Id 'https://{{DocumentDBHost}}/dbs/ShopAsAI/colls/products/docs', the verb is 'GET', resourceType is 'docs'.
