@@ -1,6 +1,5 @@
 # CARTME- AI-IOT Based Smart Shopping Microsoft Azure Services
 
-
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 * [About the Project](#about-the-project)
