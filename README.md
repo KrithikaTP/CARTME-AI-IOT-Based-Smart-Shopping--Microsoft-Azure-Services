@@ -100,3 +100,6 @@ Add a mock data(for products) as in the follwing prescribed format
     "consumable": false,
 }
 ```
+### 3) Create resources for Text to Speech / Speech to Text in Azure Portal
+Resources for Text to Speech / Speech to Text has to be created in Azure Portal in order to use the the subscription Keys in our code. 
+Go through this link to create resources for our Speech Api Create a Speech to Text / Text to Speech Resource via Azure Portal](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview#try-the-speech-service-for-free)
