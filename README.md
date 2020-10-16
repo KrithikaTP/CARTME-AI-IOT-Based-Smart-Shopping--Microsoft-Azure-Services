@@ -42,3 +42,25 @@ Security Issues – Shop Exit detectors will detect if any unscanned products le
 Now after the shopping is done, the user just needs to go to the cart section in his App. All his products added in his trolley will be present in the Cart Section. The customer can just make the payment via the App.
 
 Also, the Supermarket's management can view the statistical analysis of the products on a Dashboard(using azure IOT services). This would help the management to know more about customer's preferences and mostly liked products and the products at peak sale.
+
+## Built With
+* Speech to Text – to convert user Speech into text
+
+* Text to Speech – to convert the bot's text into speech 
+
+* QnA Maker – entire bot's intelligence 
+
+* Azure Cosmos DB – backed with customer data and products data
+
+* Azure Bing Visual Search – visual search for products and support customers.
+
+* Azure IOT Hub – receive data regarding products sale
+
+* Stream Analytics Job – Input/Query/Output data to Power Bi
+
+* Power BI Dashboard – to visualize the statistical analysis on products
+
+
+## Set Up the Azure Backend
+### 1) Register Raspberry Pi with Azure IOT Hub
+Go through this link to register the raspberry pi [How to register a new device in IOT Hub](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-register-device)
