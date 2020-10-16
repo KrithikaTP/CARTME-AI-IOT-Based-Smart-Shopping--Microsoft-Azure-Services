@@ -7,7 +7,7 @@
 * [Built With](#built-with)
 * [Set Up the Azure Backend](#set-up-the-azure-backend)
 * [Connecting the sensors with Raspberry Pi](#connecting-the-sensors-with-raspberry-Pi)
-* [How to Run Bin Part Using Raspberry Pi](#how-to-run-bin-part-using-raspberry-pi)
+* [How to Run Smart Trolley Using Raspberry Pi](#how-to-run-smart-trolley-using-raspberry-pi)
 * [Run the Flutter App](#run-the-flutter-app)
 
 
@@ -172,3 +172,12 @@ speech_config = SpeechConfig(subscription="<YOUR SUBSCRIPTION>", region="<YOUR S
 BASE_URI = "YOUR BASE URI"
 SUBSCRIPTION_KEY = '<YOUR SUBSCRIPTION KEY>'
 ```
+Run the shopAsAI.py file to perform the Trolley's Function
+```
+python shopAsAI.py
+```
+Run the powerBiStats.py to visualize the product sales and the highly saled product as a graph in your POWER BI dashboard  (Send some random values as mock data in the main function of the python file)
+```
+python powerBiStats.py
+```
+
