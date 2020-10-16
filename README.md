@@ -125,3 +125,9 @@ FROM
     inputiothub
 ```
 Go to the Power BI dashboard and set up a simple Line Graph Chart and Card with this dataset available in the options while setting up.
+
+## Connecting the sensors with Raspberry Pi
+### 1) Connect the HX711 Weight Sensor to Raspberry Pi as shown in the circuit diagram below
+![](https://tutorials-raspberrypi.de/wp-content/uploads/Raspberry-Pi-HX711-Steckplatine-600x342.png)
+### 2) Connect the V2 Camera in the Camera port of Raspberry Pi as shown below
+![](https://www.allaboutcircuits.com/uploads/articles/raspberry-pi-camera-2.png?v=1470886330073)
