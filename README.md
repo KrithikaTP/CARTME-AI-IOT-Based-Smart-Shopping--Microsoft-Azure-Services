@@ -132,6 +132,7 @@ Go to the Power BI dashboard and set up a simple Line Graph Chart and Card with 
 ### 2) Connect the V2 Camera in the Camera port of Raspberry Pi as shown below
 ![](https://www.allaboutcircuits.com/uploads/articles/raspberry-pi-camera-2.png?v=1470886330073)
 
+## How to Run =Smart Trolley Using Raspberry Pi
 ### Prerequisite
 * Clone the 'Smart_Trolley_Raspberry_Pi' folder in Raspberry Pi
 * Install the following packages in Raspberry Pi.
