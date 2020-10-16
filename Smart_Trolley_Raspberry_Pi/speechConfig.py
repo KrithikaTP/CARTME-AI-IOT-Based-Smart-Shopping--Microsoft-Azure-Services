@@ -1,0 +1,1 @@
+SpeechConfig(subscription: typing.Union[str, NoneType] = None, region: typing.Union[str, NoneType] = None, endpoint: typing.Union[str, NoneType] = None, host: typing.Union[str, NoneType] = None, auth_token: typing.Union[str, NoneType] = None, speech_recognition_language: typing.Union[str, NoneType] = None)
