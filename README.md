@@ -64,3 +64,39 @@ Also, the Supermarket's management can view the statistical analysis of the prod
 ## Set Up the Azure Backend
 ### 1) Register Raspberry Pi with Azure IOT Hub
 Go through this link to register the raspberry pi [How to register a new device in IOT Hub](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-register-device)
+
+### 2) Create a Cosmos DB Container
+This has to be setup in order to read and write data of the customer. Also a mock data of the products are needed to be entered.Similarly when a user does log in via the Flutter App, the data is fetched from Cosmos DB and it is read. 
+* Go to the Azure Portal
+* Create a database named 'ShopAsAi'
+* Create a container name 'customers'
+* Create a container name 'products'
+To get more idea on how to create a container in Cosmos DB refer the link [Quickstart with Azure Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/create-cosmosdb-resources-portal)
+Add a mock data(for customers) as in the follwing prescribed format
+```
+{
+
+    "id": "CUS087",
+    "userId": "CUS087",
+    "Name": "Alex",
+    "Age": 41,
+    "Sex": "M",
+    "Address": "No.09,Greams Road,Egmore, Chennai-08",
+    "checkList": [],
+    "cart": []
+}
+```
+Add a mock data(for products) as in the follwing prescribed format
+```
+{
+    "id": "PROD01",
+    "productId": "PROD01",
+    "name": "Aqua Fresh Perfume",
+    "price": 150,
+    "month": "05",
+    "day": "02",
+    "year": "2021",
+    "sex": "F",
+    "consumable": false,
+}
+```
