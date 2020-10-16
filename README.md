@@ -124,3 +124,4 @@ INTO
 FROM
     inputiothub
 ```
+Go to the Power BI dashboard and set up a simple Line Graph Chart and Card with this dataset available in the options while setting up.
