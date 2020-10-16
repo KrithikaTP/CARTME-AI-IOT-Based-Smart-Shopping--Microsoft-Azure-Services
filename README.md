@@ -180,4 +180,11 @@ Run the powerBiStats.py to visualize the product sales and the highly saled prod
 ```
 python powerBiStats.py
 ```
+**Check out the video demo for more clarity**
 
+## Run the Flutter App
+### Set your AZURE Credentials 
+* Open the generate_auth_token.dart and change the following details from your Azure Cosmos DB Portal.
+```sh
+String masterKey = '<YOUR MASTER KEY(Cosmos DB)>';
+```
