@@ -106,5 +106,21 @@ Go through this link to create resources for our Speech Api [Create a Speech to 
 
 ### 4) Create the bot using QnA Maker 
 Download the 'dataset.txt' file inside the 'Smart_Trolley_Raspberry_Pi' folder which contains some mock data of the Questions and Answers. 
-Using the following link upload, train and publish the AI model. [Create, train, and publish your QnA Maker knowledge base](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base)
+Using the following link upload the file, train and publish the AI model [Create, train, and publish your QnA Maker knowledge base](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base)
 This will work for a nice shopping experience. But this can be much more improved by adding more questions-answers.
+
+### 5) Setup the Steam Analytics and Power BI Dashboard
+* Create a stream analytics resource in the Azure Portal. 
+* Create an input resource (it is from IOT Hub)
+* Create an output resource (choose the Power BI option)
+* Setup the query as follows
+```
+SELECT
+    CAST(iothub.EnqueuedTime AS datetime) AS event_date,
+    CAST(productCount AS float) AS productCount
+   
+INTO
+    outputbi
+FROM
+    inputiothub
+```
