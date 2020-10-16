@@ -103,3 +103,8 @@ Add a mock data(for products) as in the follwing prescribed format
 ### 3) Create resources for Text to Speech / Speech to Text in Azure Portal
 Resources for Text to Speech / Speech to Text has to be created in Azure Portal in order to use the the subscription Keys in our code. 
 Go through this link to create resources for our Speech Api [Create a Speech to Text / Text to Speech Resource via Azure Portal](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview#try-the-speech-service-for-free)
+
+### 4) Create the bot using QnA Maker 
+Download the 'dataset.txt' file inside the 'Smart_Trolley_Raspberry_Pi' folder which contains some mock data of the Questions and Answers. 
+Using the following link upload, train and publish the AI model. [Create, train, and publish your QnA Maker knowledge base](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base)
+This will work for a nice shopping experience. But this can be much more improved by adding more questions-answers.
