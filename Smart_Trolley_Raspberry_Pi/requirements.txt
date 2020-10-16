@@ -1,0 +1,7 @@
+azure-cognitiveservices-speech==1.13.0
+azure-cosmosdb-table==1.0.6
+picamera==1.13
+azure-iot-device==2.2.0
+hx711==1.1.2.3
+qrcode==6.1
+pyzbar==0.1.8
