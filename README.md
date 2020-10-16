@@ -153,3 +153,22 @@ settings = {
 ```sh
 CONNECTION_STRING = "<YOUR CONNECTION STRING>"
 ```
+* Open the azureBot.py file and change the following details from your Azure Portal for QnA Maker.
+```
+subscription_key = '<YOUR SUBSCRIPTION KEY>'
+
+endpoint = '<YOUR END POINT>'
+runtime_endpoint = '<YOUR RUNTIME ENDPOINT>'
+kb_id = '<YOUR KB ID>'
+queryRuntimeKey = '<QUERY RUNTIME KEY>'
+```
+* Open the speechToText.py, textToSpeech.py files and change the following details from your Azure Portal for Azure Speech API.
+```
+speech_key, service_region = "<YOUR KEY>", "<YOUR SPEECH API REGION>"
+speech_config = SpeechConfig(subscription="<YOUR SUBSCRIPTION>", region="<YOUR SPEECH API REGION>")
+```
+* Open the visualSearch.py, textToSpeech.py files and change the following details from your Azure Portal for Bing Visual Search.
+```
+BASE_URI = "YOUR BASE URI"
+SUBSCRIPTION_KEY = '<YOUR SUBSCRIPTION KEY>'
+```
