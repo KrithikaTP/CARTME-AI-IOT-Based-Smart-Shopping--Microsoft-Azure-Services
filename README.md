@@ -196,3 +196,7 @@ GenerateAuthToken authToken = GenerateAuthToken(resourceId: '<Your RESOURCE ID>'
 ```
 Eg: 
 For a resource Id 'https://{{DocumentDBHost}}/dbs/ShopAsAI/colls/products/docs', the verb is 'GET', resourceType is 'docs'.
+
+* Clone the folder except the 'Smart_Trolley_Raspberry_Pi'.
+* Pub Get the dependencies.
+* Setup Visiual Studio Code for App Development and run the app.
